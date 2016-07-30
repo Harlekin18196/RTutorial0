@@ -2,7 +2,7 @@
 ### July 30, 2016 ####
 
 # This is to read in the data, adn save it as LungCapData
-LungCapData <- read.table(file="~/Documents/RTutorials/LungCapData.txt", header = T, sep = "\t")
+LungCapData <- read.table(file="~/Documents/RTutorials/Project1/LungCapData.txt", header = T, sep = "\t")
 
 # Attach the data
 attach(LungCapData)
