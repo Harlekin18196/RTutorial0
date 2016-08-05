@@ -32,3 +32,50 @@ TEST$p.value
 
 
 ### Conducting the independent 2-sample t-test Confidence Interval
+# These are parametric methods appropriate for examining the difference in means 
+# for 2 populations, they are ways of examining the relationship between a numberic 
+# variable (Y) and a categorical explanatory variable (X, with 2 levels)
+
+boxplot(LungCap ~ Smoke)
+# H0: mean lung cap pf smokers = of non smokers
+# two sided test
+# assume non - equal variances
+
+t.test(LungCap ~ Smoke, mu = 0, alt = "two.sided", conf = 0.95, var.eq = F, paired = F)
+# values above are all default values
+t.test(LungCap ~ Smoke)
+
+t.test(LungCap[Smoke == "no"], LungCap[Smoke == "yes"])
+
+# assuming equal variance
+t.test(LungCap ~ Smoke, mu = 0, alt = "two.sided", conf = 0.95, var.eq = T, paired = F)
+
+# how to decide whether to assume equal or unequal variance
+# we could examine the boxplot produced earlier. Alternatively we can compute the actual sample variances
+var(LungCap[Smoke == "yes"])
+var(LungCap[Smoke == "no"])
+# We can also compute Levene's test, where
+# H_0: population variances are equal
+# need to imply the CAR package for this (see tutorial 1.10 for how to install packages in R)
+library(car)
+leveneTest(LungCap~Smoke)
+# small p-value suggests we should reject H_0 of equal variance 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
